@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dogodkey – Dogodki z značajem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F4EF;
+      --warm-white: #FDFCFA;
+      --charcoal: #1C1C1A;
+      --mid: #5C5A56;
+      --light: #9C9A96;
+      --gold: #C4A96B;
+      --gold-light: #E8D9B8;
+      --border: #E8E4DC;
+      --section-gap: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 72px;
+      background: rgba(253, 252, 250, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    /* ── HERO ── */
+    #domov {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 60px 100px;
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      bottom: -40px;
+      right: -20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(120px, 18vw, 260px);
+      font-weight: 300;
+      color: rgba(196, 169, 107, 0.08);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 820px;
+      margin-bottom: 32px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--charcoal);
+      color: var(--warm-white);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn-primary:hover { background: var(--gold); color: var(--charcoal); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--charcoal);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .btn-outline:hover { border-color: var(--charcoal); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 60px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: var(--section-gap) 60px; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .section-intro {
+      font-size: 16px;
+      color: var(--mid);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 40px 0;
+    }
+
+    /* ── O NAS ── */
+    #o-nas {
+      background: var(--charcoal);
+      color: var(--warm-white);
+    }
+
+    #o-nas .section-label { color: var(--gold); }
+    #o-nas .section-title { color: var(--warm-white); }
+
+    .o-nas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .o-nas-text p {
+      color: rgba(253, 252, 250, 0.7);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .o-nas-values {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .value-item {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+    }
+
+    .value-num {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .value-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 10px;
+    }
+
+    .value-desc {
+      font-size: 14px;
+      color: rgba(253, 252, 250, 0.55);
+      line-height: 1.7;
+    }
+
+    /* ── STORITVE ── */
+    #storitve { background: var(--warm-white); }
+
+    .storitve-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .storitev-card {
+      background: var(--cream);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .storitev-card:hover { background: #EDE9E2; }
+
+    .storitev-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s;
+    }
+
+    .storitev-card:hover::after { width: 100%; }
+
+    .storitev-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .storitev-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .storitev-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .storitev-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .storitev-list li {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+    }
+
+    /* Full-width card */
+    .storitev-card.full {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .storitev-includes {
+      margin-top: 0;
+    }
+
+    .storitev-includes-title {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .storitev-includes ul {
+      list-style: none;
+    }
+
+    .storitev-includes li {
+      font-size: 14px;
+      color: var(--mid);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .storitev-includes li::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── DEKORACIJA ── */
+    #dekoracija {
+      background: var(--cream);
+    }
+
+    .deko-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 64px;
+    }
+
+    .deko-item {
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .deko-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .deko-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .deko-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .deko-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── PAKETI ── */
+    #paketi { background: var(--warm-white); }
+
+    .paketi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .paket-card {
+      background: var(--cream);
+      padding: 56px 40px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .paket-card.featured {
+      background: var(--charcoal);
+      color: var(--warm-white);
+    }
+
+    .paket-badge {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 12px;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+
+    .paket-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .paket-tagline {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .paket-card.featured .paket-tagline { color: rgba(253,252,250,0.6); }
+
+    .paket-features {
+      list-style: none;
+      margin-bottom: 48px;
+    }
+
+    .paket-features li {
+      font-size: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--mid);
+    }
+
+    .paket-card.featured .paket-features li {
+      border-color: rgba(255,255,255,0.1);
+      color: rgba(253,252,250,0.7);
+    }
+
+    .paket-features li::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .paket-cta {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px;
+      border: 1px solid var(--border);
+      color: var(--charcoal);
+      transition: all 0.25s;
+    }
+
+    .paket-card.featured .paket-cta {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    .paket-cta:hover { background: var(--charcoal); color: var(--warm-white); border-color: var(--charcoal); }
+    .paket-card.featured .paket-cta:hover { background: var(--warm-white); color: var(--charcoal); border-color: var(--warm-white); }
+
+    /* ── GALERIJA PLACEHOLDER ── */
+    #galerija { background: var(--cream); }
+
+    .galerija-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 4px;
+      margin-top: 64px;
+    }
+
+    .galerija-item {
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .galerija-item:first-child { grid-row: 1 / 3; }
+
+    .galerija-item-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #DDD8CE 0%, #C8C2B5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--light);
+      letter-spacing: 0.05em;
+      transition: transform 0.5s;
+    }
+
+    .galerija-item:hover .galerija-item-inner { transform: scale(1.03); }
+
+    .galerija-item:nth-child(2) .galerija-item-inner { background: linear-gradient(135deg, #D5CFBE 0%, #BDB59F 100%); }
+    .galerija-item:nth-child(3) .galerija-item-inner { background: linear-gradient(135deg, #E2DDD5 0%, #CDC7BB 100%); }
+    .galerija-item:nth-child(4) .galerija-item-inner { background: linear-gradient(135deg, #CAC4B8 0%, #B5AEAB 100%); }
+    .galerija-item:nth-child(5) .galerija-item-inner { background: linear-gradient(135deg, #D8D3C8 0%, #C0B9AD 100%); }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      background: var(--charcoal);
+      color: var(--warm-white);
+    }
+
+    .kontakt-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    #kontakt .section-title { color: var(--warm-white); }
+    #kontakt .section-label { color: var(--gold); }
+
+    .kontakt-info {
+      margin-top: 48px;
+    }
+
+    .kontakt-info-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .kontakt-info-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .kontakt-info-value {
+      font-size: 16px;
+      color: rgba(253,252,250,0.8);
+    }
+
+    .kontakt-form {
+      margin-top: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--warm-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-group select option { background: var(--charcoal); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 18px;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.25s;
+    }
+
+    .btn-submit:hover { background: var(--warm-white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #161614;
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── QUOTE STRIP ── */
+    .quote-strip {
+      background: var(--gold);
+      padding: 64px 60px;
+      text-align: center;
+    }
+
+    .quote-strip blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 42px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--charcoal);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── MOBILE HAMBURGER ── */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--charcoal);
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      :root { --section-gap: 80px; }
+      nav { padding: 0 24px; }
+      section { padding: var(--section-gap) 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      #domov { padding: 120px 24px 80px; }
+      .o-nas-grid, .storitve-grid, .paketi-grid, .deko-grid, .kontakt-inner { grid-template-columns: 1fr; gap: 40px; }
+      .storitev-card.full { grid-template-columns: 1fr; }
+      .galerija-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .galerija-item:first-child { grid-row: auto; }
+      .hero-scroll { left: 24px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
+      .quote-strip { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#domov" class="nav-logo">Dogodkey</a>
+  <ul class="nav-links">
+    <li><a href="#domov">Domov</a></li>
+    <li><a href="#storitve">Storitve</a></li>
+    <li><a href="#paketi">Paketi</a></li>
+    <li><a href="#galerija">Galerija</a></li>
+    <li><a href="#o-nas">O nas</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Povpraševanje</a>
+  <button class="hamburger" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="domov">
+  <div class="hero-bg-text">Dg</div>
+  <p class="hero-label fade-up">Butična agencija za organizacijo dogodkov</p>
+  <h1 class="hero-title fade-up">Dogodki z <em>značajem.</em><br>Izvedeni brez<br>kompromisov.</h1>
+  <p class="hero-sub fade-up">Butična organizacija dogodkov na ključ za naročnike, ki cenijo estetiko, jasnost in brezhibno izvedbo.</p>
+  <div class="hero-actions fade-up">
+    <a href="#kontakt" class="btn-primary">Povpraševanje po meri →</a>
+    <a href="#o-nas" class="btn-outline">Spoznajte naš pristop</a>
+  </div>
+  <div class="hero-scroll">Pomaknite se navzdol</div>
+</section>
+
+<!-- O NAS -->
+<section id="o-nas">
+  <div class="o-nas-grid">
+    <div class="o-nas-text fade-up">
+      <p class="section-label">O nas</p>
+      <h2 class="section-title">Ustvarjamo doživetja, ki jih začutiš.</h2>
+      <div class="divider"></div>
+      <p>Dogodkey je butična agencija za organizacijo dogodkov na ključ, namenjena naročnikom, ki cenijo estetiko, brezhibno izvedbo in premišljene podrobnosti. Ustvarjamo dogodke, ki niso le lepo videti, temveč imajo občutek, ritem in značaj.</p>
+      <p>Verjamemo, da pravi luksuz ni v pretiravanju, temveč v ravnovesju – med vizualno dovršenostjo, jasno strukturo in brezskrbno izkušnjo naročnika. Zato vsak dogodek oblikujemo individualno, z veliko pozornostjo do prostora, atmosfere in detajlov.</p>
+      <p>Vsako sodelovanje se začne s pogovorom. Prisluhnemo vašim željam, razumemo vašo vizijo in jo nadgradimo s strokovnim znanjem in natančno organizacijo.</p>
+    </div>
+    <div class="o-nas-values fade-up">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div class="value-title">Mirno & samozavestno</div>
+        <div class="value-desc">Brez nepotrebne dramatike. Vsak korak je premišljen, vsaka odločitev utemeljena.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div class="value-title">Estetsko & brezčasno</div>
+        <div class="value-desc">Ne sledimo trendom, temveč ustvarjamo dogodke, ki ostanejo relevantni dolgo po zaključku.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div class="value-title">Celovito & usklajeno</div>
+        <div class="value-desc">Organizacija, dekoracija in vizualna dokumentacija kot ena kohezivna izkušnja.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div class="value-title">Diskretno prisotni</div>
+        <div class="value-desc">Na dan dogodka smo vedno korak pred dogajanjem, a nikoli v ospredju.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORITVE -->
+<section id="storitve">
+  <p class="section-label fade-up">Storitve</p>
+  <h2 class="section-title fade-up">Vse pod eno streho.</h2>
+  <p class="section-intro fade-up">Od koncepta do zaključka – celovita organizacija, ki ne zahteva kompromisov.</p>
+  <div class="storitve-grid">
+
+    <!-- Organizacija – full width -->
+    <div class="storitev-card full fade-up">
+      <div>
+        <span class="storitev-icon">✦</span>
+        <h3 class="storitev-title">Organizacija dogodkov na ključ</h3>
+        <p class="storitev-desc">Prevzamemo celotno organizacijo dogodka – od prve ideje do zadnjega detajla. Vsak dogodek vodimo z jasnim potekom, natančno koordinacijo in popolno osredotočenostjo na naročnika. Vi uživate, mi poskrbimo za vse ostalo.</p>
+        <ul class="storitev-list">
+          <li>Poroke</li>
+          <li>Zasebni dogodki</li>
+          <li>Poslovni dogodki</li>
+          <li>Tematski dogodki</li>
+        </ul>
+      </div>
+      <div class="storitev-includes">
+        <p class="storitev-includes-title">Vključuje</p>
+        <ul>
+          <li>Idejno zasnovo in koncept</li>
+          <li>Časovnico, logistiko in koordinacijo</li>
+          <li>Dekoracijo in balonske postavitve</li>
+          <li>Profesionalno fotografijo in video</li>
+          <li>Gostinsko ponudbo po dogovoru</li>
+          <li>Koordinacijo ekipe na dan dogodka</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Poroke -->
+    <div class="storitev-card fade-up">
+      <span class="storitev-icon">◇</span>
+      <h3 class="storitev-title">Poroke</h3>
+      <p class="storitev-desc">Poroka je enkraten in globoko oseben trenutek. Oblikujemo jo z občutkom za zgodbo para, estetiko prostora in premišljene detajle, ki ustvarijo celoto brez pretiravanja.</p>
+      <ul class="storitev-list">
+        <li>Zaroka</li>
+        <li>Poročni obred</li>
+        <li>Poročna zabava</li>
+        <li>Destinacijska poroka</li>
+        <li>Obletnica</li>
+      </ul>
+    </div>
+
+    <!-- Zasebni -->
+    <div class="storitev-card fade-up">
+      <span class="storitev-icon">○</span>
+      <h3 class="storitev-title">Zasebni dogodki</h3>
+      <p class="storitev-desc">Zasebni dogodki so intimni in osebni. Oblikujemo jih z občutkom, diskretnostjo in estetsko umirjenostjo, ki prostoru in trenutku dajeta pravo težo.</p>
+      <ul class="storitev-list">
+        <li>Rojstni dan</li>
+        <li>Zabava</li>
+        <li>Baby shower</li>
+        <li>Gender reveal</li>
+        <li>Krst</li>
+      </ul>
+    </div>
+
+    <!-- Poslovni -->
+    <div class="storitev-card fade-up">
+      <span class="storitev-icon">▭</span>
+      <h3 class="storitev-title">Poslovni dogodki</h3>
+      <p class="storitev-desc">Poslovni dogodki so odraz vaše znamke. Poskrbimo, da so profesionalni, premišljeni in vizualno usklajeni – brez odvečnih elementov, z jasnim sporočilom.</p>
+      <ul class="storitev-list">
+        <li>Konferenca</li>
+        <li>Team building</li>
+        <li>Novoletna zabava</li>
+        <li>Božičkovanje</li>
+      </ul>
+    </div>
+
+    <!-- Dekoracija -->
+    <div class="storitev-card fade-up">
+      <span class="storitev-icon">✿</span>
+      <h3 class="storitev-title">Dekoracija & Baloni</h3>
+      <p class="storitev-desc">Balonske in dekorativne postavitve oblikujemo kot del celote, ne kot dodatek. Barve, materiali in oblike so skrbno izbrani, da prostor dopolnjujejo, ne preglasijo. Vsaka postavitev je prilagojena prostoru in zgodbi.</p>
+      <ul class="storitev-list">
+        <li>Balonske postavitve</li>
+        <li>Dekorativne aranžmaje</li>
+        <li>Fotokotiček</li>
+        <li>Tematska dekoracija</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEKO ICONS -->
+<section id="dekoracija" style="padding-top: 0;">
+  <div class="deko-grid">
+    <div class="deko-item fade-up">
+      <span class="deko-icon">📷</span>
+      <h3 class="deko-title">Fotografija & Video</h3>
+      <p class="deko-desc">Fotografija in video nista le dokumentacija, temveč vizualni zapis vzdušja. Ujamemo svetlobo, detajle in trenutke, ki dajejo značaj in trajno vrednost.</p>
+    </div>
+    <div class="deko-item fade-up">
+      <span class="deko-icon">🥂</span>
+      <h3 class="deko-title">Gostinska ponudba</h3>
+      <p class="deko-desc">Profesionalna barska postrežba, izkušen barman, izbor pijač in koktajlov, catering po meri, sladki kotiček ali aperitivni sprejem.</p>
+    </div>
+    <div class="deko-item fade-up">
+      <span class="deko-icon">🎬</span>
+      <h3 class="deko-title">Reels & Kratki videi</h3>
+      <p class="deko-desc">Hitra dostava vsebin za družbena omrežja. Vsebine, ki ujamejo vzdušje in estetiko vašega dogodka za deljenje.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-strip">
+  <blockquote>"Ustvarjamo doživetja, ki ne potrebujejo razlage – ker jih začutiš."</blockquote>
+</div>
+
+<!-- PAKETI -->
+<section id="paketi">
+  <p class="section-label fade-up">Paketi</p>
+  <h2 class="section-title fade-up">Izberite svojo izkušnjo.</h2>
+  <p class="section-intro fade-up">Vsak paket je zasnovan z enakim občutkom za kakovost – razlika je v obsegu in globini sodelovanja.</p>
+
+  <div class="paketi-grid">
+
+    <div class="paket-card fade-up">
+      <span class="paket-badge">Basic</span>
+      <h3 class="paket-name">Basic</h3>
+      <p class="paket-tagline">Premišljena osnova za elegantno izpeljan dogodek.</p>
+      <ul class="paket-features">
+        <li>Idejni koncept dogodka</li>
+        <li>Osnovna dekoracija</li>
+        <li>Koordinacija na dan</li>
+        <li>Fotografija (3 ure)</li>
+        <li>Časovnica in logistika</li>
+      </ul>
+      <a href="#kontakt" class="paket-cta">Povpraševanje</a>
+    </div>
+
+    <div class="paket-card featured fade-up">
+      <span class="paket-badge">Priporočeno</span>
+      <h3 class="paket-name">Premium</h3>
+      <p class="paket-tagline">Uravnotežena izbira za naročnike, ki želijo več kot osnovno izvedbo.</p>
+      <ul class="paket-features">
+        <li>Celostna zasnova koncepta</li>
+        <li>Dekoracija & balonske postavitve</li>
+        <li>Koordinacija ekipe</li>
+        <li>Fotografija & video</li>
+        <li>Gostinska ponudba</li>
+        <li>Reels za omrežja</li>
+      </ul>
+      <a href="#kontakt" class="paket-cta">Povpraševanje</a>
+    </div>
+
+    <div class="paket-card fade-up">
+      <span class="paket-badge">Lux</span>
+      <h3 class="paket-name">Lux</h3>
+      <p class="paket-tagline">Celovita izkušnja brez kompromisov, zasnovana za popolno brezskrbnost.</p>
+      <ul class="paket-features">
+        <li>Vse iz Premium paketa</li>
+        <li>Neomejena koordinacija</li>
+        <li>Premium dekoracija po meri</li>
+        <li>Celodnevna fotografija & video</li>
+        <li>Catering po meri</li>
+        <li>Osebni koordinator</li>
+      </ul>
+      <a href="#kontakt" class="paket-cta">Povpraševanje</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERIJA -->
+<section id="galerija" style="background: var(--cream);">
+  <p class="section-label fade-up">Galerija</p>
+  <h2 class="section-title fade-up">Naše delo govori samo zase.</h2>
+  <div class="galerija-grid fade-up">
+    <div class="galerija-item">
+      <div class="galerija-item-inner">Poroke</div>
+    </div>
+    <div class="galerija-item">
+      <div class="galerija-item-inner">Dekoracija</div>
+    </div>
+    <div class="galerija-item">
+      <div class="galerija-item-inner">Baloni</div>
+    </div>
+    <div class="galerija-item">
+      <div class="galerija-item-inner">Gostinska ponudba</div>
+    </div>
+    <div class="galerija-item">
+      <div class="galerija-item-inner">Zasebni dogodki</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="kontakt-inner">
+    <div class="fade-up">
+      <p class="section-label">Kontakt</p>
+      <h2 class="section-title">Pogovor je prvi korak k brezhibnemu dogodku.</h2>
+      <p style="color: rgba(253,252,250,0.55); font-size: 15px; line-height: 1.75; margin-top: 16px;">Opisite nam vašo vizijo – mi jo nadgradimo s strokovnim znanjem, kreativnim konceptom in natančno organizacijo.</p>
+      <div class="kontakt-info">
+        <div class="kontakt-info-item">
+          <div class="kontakt-info-label">Email</div>
+          <div class="kontakt-info-value">hello@dogodkey.si</div>
+        </div>
+        <div class="kontakt-info-item">
+          <div class="kontakt-info-label">Telefon</div>
+          <div class="kontakt-info-value">+386 XX XXX XXX</div>
+        </div>
+        <div class="kontakt-info-item">
+          <div class="kontakt-info-label">Instagram</div>
+          <div class="kontakt-info-value">@dogodkey</div>
+        </div>
+        <div class="kontakt-info-item">
+          <div class="kontakt-info-label">Odzivni čas</div>
+          <div class="kontakt-info-value">V roku 24 ur</div>
+        </div>
+      </div>
+    </div>
+    <div class="kontakt-form fade-up">
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ime in priimek</label>
+            <input type="text" placeholder="Ana Novak" />
+          </div>
+          <div class="form-group">
+            <label>Telefon</label>
+            <input type="tel" placeholder="+386 ..." />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email naslov</label>
+          <input type="email" placeholder="ana@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Vrsta dogodka</label>
+          <select>
+            <option value="" disabled selected>Izberite vrsto dogodka</option>
+            <option>Poroka</option>
+            <option>Zaroka</option>
+            <option>Rojstni dan</option>
+            <option>Baby shower</option>
+            <option>Poslovni dogodek</option>
+            <option>Tematski dogodek</option>
+            <option>Drugo</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Datum dogodka</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Okvirno število gostov</label>
+            <input type="text" placeholder="npr. 50–80" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Opišite vaš dogodek</label>
+          <textarea placeholder="Povejte nam o vaši viziji, prostoru, željah..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Pošlji povpraševanje →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Dogodkey</span>
+  <ul class="footer-links">
+    <li><a href="#storitve">Storitve</a></li>
+    <li><a href="#paketi">Paketi</a></li>
+    <li><a href="#galerija">Galerija</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Dogodkey. Vse pravice pridržane.</span>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,0.06)' : 'none';
+  });
+</script>
+</body>
+</html>
