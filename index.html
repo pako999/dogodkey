@@ -86,6 +86,85 @@
       padding-bottom: 2px;
     }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* MOBILE MENU OVERLAY */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--warm-white);
+      z-index: 150;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: 16px 0;
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-menu .mobile-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      color: var(--warm-white);
+      padding: 14px 40px;
+      margin-top: 24px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+    }
+
     /* SHARED */
     section { padding: var(--gap) 60px; }
 
@@ -668,6 +747,16 @@
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#marketing" onclick="closeMenu()">Marketing</a>
+  <a href="#dogodki" onclick="closeMenu()">Dogodki</a>
+  <a href="#spletne-strani" onclick="closeMenu()">Spletne strani</a>
+  <a href="#paketi" onclick="closeMenu()">Paketi</a>
+  <a href="#o-nas" onclick="closeMenu()">O nas</a>
+  <a href="#kontakt" class="mobile-cta" onclick="closeMenu()">Povpraševanje</a>
+</div>
+
 <!-- NAV -->
 <nav id="nav">
   <a href="#domov" class="nav-logo">Dogodkey</a>
@@ -680,6 +769,9 @@
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <a href="#kontakt" class="nav-cta">Povpraševanje</a>
+  <button class="hamburger" id="hamburger" aria-label="Meni" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1093,6 +1185,34 @@
 </footer>
 
 <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    const isOpen = menu.classList.contains('open');
+    if (isOpen) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      menu.style.display = 'none';
+      document.body.style.overflow = '';
+    } else {
+      menu.style.display = 'flex';
+      requestAnimationFrame(() => {
+        menu.classList.add('open');
+        btn.classList.add('open');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { menu.style.display = 'none'; }, 300);
+  }
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
