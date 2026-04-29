@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dogodkey – Agencija za marketing, dogodke in spletne strani</title>
+  <title>Dogodkey & Agency – Agencija za dogodke in marketing, ki razume posel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -51,12 +51,21 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--charcoal);
+      display: flex;
+      align-items: center;
       text-decoration: none;
+      gap: 10px;
+    }
+
+    .nav-logo svg { display: block; }
+
+    .mobile-menu .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--charcoal);
+      margin-bottom: 40px;
     }
 
     .nav-links {
@@ -201,6 +210,7 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.instant { transition: none; }
 
     /* HERO */
     #domov {
@@ -749,22 +759,32 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#marketing" onclick="closeMenu()">Marketing</a>
+  <div class="logo-text">Dogodkey & Agency</div>
   <a href="#dogodki" onclick="closeMenu()">Dogodki</a>
+  <a href="#marketing" onclick="closeMenu()">Marketing</a>
   <a href="#spletne-strani" onclick="closeMenu()">Spletne strani</a>
-  <a href="#paketi" onclick="closeMenu()">Paketi</a>
   <a href="#o-nas" onclick="closeMenu()">O nas</a>
   <a href="#kontakt" class="mobile-cta" onclick="closeMenu()">Povpraševanje</a>
 </div>
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#domov" class="nav-logo">Dogodkey</a>
+  <a href="#domov" class="nav-logo">
+    <svg width="132" height="32" viewBox="0 0 132 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- D mark -->
+      <path d="M4 6 L4 26 L12 26 C18.627 26 24 20.627 24 16 C24 11.373 18.627 6 12 6 Z" stroke="#1C1C1A" stroke-width="1.5" fill="none"/>
+      <line x1="4" y1="16" x2="24" y2="16" stroke="#C4A96B" stroke-width="1"/>
+      <!-- Wordmark -->
+      <text x="30" y="21" font-family="'Cormorant Garamond', Georgia, serif" font-size="15" font-weight="500" letter-spacing="1.5" fill="#1C1C1A">DOGODKEY</text>
+      <!-- Ampersand divider -->
+      <line x1="29" y1="26" x2="131" y2="26" stroke="#C4A96B" stroke-width="0.75" opacity="0.6"/>
+      <text x="30" y="32" font-family="'Inter', sans-serif" font-size="7" font-weight="400" letter-spacing="3.5" fill="#9C9A96">AGENCY</text>
+    </svg>
+  </a>
   <ul class="nav-links">
-    <li><a href="#marketing">Marketing</a></li>
     <li><a href="#dogodki">Dogodki</a></li>
+    <li><a href="#marketing">Marketing</a></li>
     <li><a href="#spletne-strani">Spletne strani</a></li>
-    <li><a href="#paketi">Paketi</a></li>
     <li><a href="#o-nas">O nas</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
@@ -777,9 +797,9 @@
 <!-- HERO -->
 <section id="domov">
   <div class="hero-bg">Dg</div>
-  <p class="hero-label fade-up">Butična agencija — Marketing · Dogodki · Spletne strani</p>
-  <h1 class="hero-title fade-up">Ustvarjamo znamke,<br><em>doživetja</em> in<br>digitalne izkušnje.</h1>
-  <p class="hero-sub fade-up">Vse pod eno streho — od strategije in komunikacije do nepozabnih dogodkov in spletnih strani, ki delajo.</p>
+  <p class="hero-label fade-up">Dogodki · Marketing · Spletne strani</p>
+  <h1 class="hero-title fade-up">Agencija za dogodke in<br>marketing, ki <em>razume</em><br>posel.</h1>
+  <p class="hero-sub fade-up">Dva produkta. Ena filozofija. Dogodki in marketing, zasnovani na izkušnjah iz prodaje in vodenja.</p>
   <div class="hero-actions fade-up">
     <a href="#kontakt" class="btn btn-dark">Povpraševanje po meri →</a>
     <a href="#storitve" class="btn btn-outline">Naše storitve</a>
@@ -792,20 +812,20 @@
   <div class="pillars">
     <div class="pillar fade-up">
       <div class="pillar-num">01</div>
-      <h2 class="pillar-title">Marketing</h2>
-      <p class="pillar-desc">Strategija, vsebina in komunikacija, ki gradi znamko z jasnim glasom in dolgotrajnim vtisem.</p>
-      <a href="#marketing" class="pillar-link">Več o marketingu</a>
+      <h2 class="pillar-title">Dogodki na ključ</h2>
+      <p class="pillar-desc">Organizacija od koncepta do izvedbe. Zasebni in poslovni dogodki, usmerjeni v izkušnjo, odnos in zaupanje.</p>
+      <a href="#dogodki" class="pillar-link">Več o dogodkih</a>
     </div>
     <div class="pillar fade-up">
       <div class="pillar-num">02</div>
-      <h2 class="pillar-title">Dogodki na ključ</h2>
-      <p class="pillar-desc">Celovita organizacija — od koncepta do izvedbe. Poroke, zasebni in poslovni dogodki z značajem.</p>
-      <a href="#dogodki" class="pillar-link">Več o dogodkih</a>
+      <h2 class="pillar-title">Marketing</h2>
+      <p class="pillar-desc">Jasen, dosleden in prodajno usmerjen marketing za podjetja, ki razumejo, da vsaka aktivnost mora imeti namen.</p>
+      <a href="#marketing" class="pillar-link">Več o marketingu</a>
     </div>
     <div class="pillar fade-up">
       <div class="pillar-num">03</div>
       <h2 class="pillar-title">Spletne strani</h2>
-      <p class="pillar-desc">Estetsko in funkcionalno — spletne strani, ki odražajo vašo znamko in privabljajo stranke.</p>
+      <p class="pillar-desc">Digitalna prisotnost, ki odraža vašo znamko in dela za vas — estetsko, hitro in funkcionalno.</p>
       <a href="#spletne-strani" class="pillar-link">Več o spletnih straneh</a>
     </div>
   </div>
@@ -814,48 +834,49 @@
 <!-- MARKETING -->
 <section id="marketing">
   <div class="fade-up">
-    <span class="label">01 — Marketing</span>
-    <h2 class="h2">Znamka z glasom<br>in značajem.</h2>
-    <p class="intro">Gradimo premišljene marketinške sisteme — od vizualne identitete in vsebine do oglaševanja in upravljanja skupnosti. Vaša prisotnost postane koherentna, prepoznavna in učinkovita.</p>
+    <span class="label">02 — Marketing</span>
+    <h2 class="h2">Agencija, ki razume,<br>zakaj marketing stane.</h2>
+    <p class="intro">Preden smo začeli ustvarjati marketing za druge, smo sami vlagali v lastne produkte in storitve. Zato razumemo težo odločitve — in prav zato z denarjem naročnika ravnamo odgovorno.</p>
   </div>
   <div class="two-col">
     <div class="marketing-services fade-up">
       <div class="ms-card">
         <span class="ms-icon">◈</span>
-        <h3 class="ms-title">Brand identiteta</h3>
-        <p class="ms-desc">Logotip, barvna paleta, tipografija in brand guidelines — vizualna osnova, ki je koherentna in premišljena.</p>
+        <h3 class="ms-title">Strategija marketinga</h3>
+        <p class="ms-desc">Analiza stanja, definiranje ciljev in prioritet, usmeritve za komunikacijo. Brez strategije marketing nima teže.</p>
       </div>
       <div class="ms-card">
         <span class="ms-icon">◉</span>
         <h3 class="ms-title">Upravljanje omrežij</h3>
-        <p class="ms-desc">Strategija, ustvarjanje vsebin, objave in skupnost. Instagram, Facebook, TikTok — usklajeno z vašo znamko.</p>
+        <p class="ms-desc">Načrtovanje in objava vsebin, upravljanje Instagram in Facebook profila, konsistenten ton in vizualni slog.</p>
       </div>
       <div class="ms-card">
         <span class="ms-icon">◎</span>
-        <h3 class="ms-title">Vsebinska produkcija</h3>
-        <p class="ms-desc">Fotografija, video, reels, stories — vizualne vsebine, ki ujamejo pozornost in gradijo zaupanje.</p>
+        <h3 class="ms-title">Ustvarjanje vsebin</h3>
+        <p class="ms-desc">Fotografija, video, kratki videi in reels — vizualne vsebine, ki so uporabne, estetske in skladne z znamko.</p>
       </div>
       <div class="ms-card">
         <span class="ms-icon">◇</span>
-        <h3 class="ms-title">Plačano oglaševanje</h3>
-        <p class="ms-desc">Meta Ads, Google Ads — kampanje z jasnimi cilji, merjenimi rezultati in optimizacijo.</p>
+        <h3 class="ms-title">Vizualni marketing</h3>
+        <p class="ms-desc">Podjetje mora navzven delovati urejeno, jasno in samozavestno. Poskrbimo za vizualno in vsebinsko usklajenost.</p>
       </div>
       <div class="ms-card">
         <span class="ms-icon">○</span>
-        <h3 class="ms-title">E-mail marketing</h3>
-        <p class="ms-desc">Newsletterji, avtomatizacije in sekvence, ki negujejo stranke in gradijo lojalnost.</p>
+        <h3 class="ms-title">Vsebine iz dogodkov</h3>
+        <p class="ms-desc">Vsak dogodek je priložnost za vsebino. Ustvarjamo digitalne vsebine, ki podjetju služijo tudi po zaključku.</p>
       </div>
       <div class="ms-card">
         <span class="ms-icon">▭</span>
-        <h3 class="ms-title">Marketinška strategija</h3>
-        <p class="ms-desc">Celostna strategija z jasnimi cilji, ciljno skupino in akcijskim načrtom za rast.</p>
+        <h3 class="ms-title">Dolgoročna podpora znamki</h3>
+        <p class="ms-desc">Konsistenten nastop, ki gradi zaupanje skozi čas. Ne delamo na količino — delamo premišljeno in strukturirano.</p>
       </div>
     </div>
     <div class="fade-up">
       <div class="divider"></div>
-      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:24px;">Vaša znamka je več kot logotip. Je ton, ki ga prepoznajo stranke. Je vizualni jezik, ki gradi zaupanje. Je prisotnost, ki dela namesto vas.</p>
-      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:24px;">V Dogodkey marketing obravnavamo kot sistematičen proces — ne kot naključne objave. Vsaka vsebina ima namen, vsak kanal svojo vlogo.</p>
-      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:40px;">Delamo z znamkami, ki razumejo, da konsistentnost gradi zaupanje in da dober marketing ni strošek, temveč investicija.</p>
+      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:24px;">Večina agencij izhaja iz marketinga. Mi izhajamo iz posla. Vemo, kako težko je zaslužiti denar, kako previdno se ga vlaga — in kako pomembno je, da marketing podpira prodajo, ne le všečkov.</p>
+      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:24px;">Marketing razumemo kot sistem, ne kot skupek objav. Jasen namen, razumevanje ciljne skupine, konsistentna komunikacija in vsebine, ki imajo smisel tudi čez čas.</p>
+      <p style="font-size:15px; color:var(--mid); line-height:1.8; margin-bottom:24px;">Ne ponujamo hitrih rešitev, praznih obljub ali trendov brez konteksta. Naš cilj ni glasnost, temveč jasnost.</p>
+      <p style="font-size:14px; color:var(--gold); line-height:1.7; margin-bottom:40px; font-style:italic;">Sodelujemo s podjetji, ki iščejo partnerja — ne izvajalca.</p>
       <a href="#kontakt" class="btn btn-dark">Začnimo pogovor →</a>
     </div>
   </div>
@@ -864,14 +885,36 @@
 <!-- DOGODKI -->
 <section id="dogodki">
   <div class="fade-up">
-    <span class="label">02 — Dogodki na ključ</span>
-    <h2 class="h2">Dogodki z značajem.<br>Izvedeni brez kompromisov.</h2>
-    <p class="intro">Butična organizacija za naročnike, ki cenijo estetiko, brezhibno izvedbo in premišljene podrobnosti. Vi uživate — mi poskrbimo za vse ostalo.</p>
+    <span class="label">01 — Dogodki na ključ</span>
+    <h2 class="h2">Organizacija, ki ima<br>namen — ne le izvedbo.</h2>
+    <p class="intro">Dogodki niso samo dogajanje. So orodje za odnos, vtis in zaupanje. Lotevamo se jih z enako odgovornostjo kot marketinga — premišljeno, strukturirano in z jasnim ciljem.</p>
   </div>
 
   <div class="dogodki-grid">
     <div class="d-card fade-up">
       <span class="d-icon">◇</span>
+      <h3 class="d-title">Zasebni dogodki</h3>
+      <ul class="d-list">
+        <li>Praznovanja in obletnice</li>
+        <li>Rojstni dan</li>
+        <li>Baby shower</li>
+        <li>Gender reveal</li>
+        <li>Zasebni dogodki po meri</li>
+      </ul>
+    </div>
+    <div class="d-card fade-up">
+      <span class="d-icon">○</span>
+      <h3 class="d-title">Poslovni dogodki</h3>
+      <ul class="d-list">
+        <li>Poslovna srečanja</li>
+        <li>Predstavitve in konference</li>
+        <li>Novoletna zabava</li>
+        <li>Dogodki za partnerje</li>
+        <li>Interni dogodki</li>
+      </ul>
+    </div>
+    <div class="d-card fade-up">
+      <span class="d-icon">▭</span>
       <h3 class="d-title">Poroke</h3>
       <ul class="d-list">
         <li>Zaroka</li>
@@ -882,35 +925,14 @@
       </ul>
     </div>
     <div class="d-card fade-up">
-      <span class="d-icon">○</span>
-      <h3 class="d-title">Zasebni dogodki</h3>
-      <ul class="d-list">
-        <li>Rojstni dan</li>
-        <li>Zabava</li>
-        <li>Baby shower</li>
-        <li>Gender reveal</li>
-        <li>Krst</li>
-      </ul>
-    </div>
-    <div class="d-card fade-up">
-      <span class="d-icon">▭</span>
-      <h3 class="d-title">Poslovni dogodki</h3>
-      <ul class="d-list">
-        <li>Konferenca</li>
-        <li>Team building</li>
-        <li>Novoletna zabava</li>
-        <li>Božičkovanje</li>
-      </ul>
-    </div>
-    <div class="d-card fade-up">
       <span class="d-icon">✿</span>
-      <h3 class="d-title">Dekoracija & Baloni</h3>
+      <h3 class="d-title">Dekoracija & izvedba</h3>
       <ul class="d-list">
         <li>Balonske postavitve</li>
         <li>Dekorativni aranžmaji</li>
+        <li>Gostinska ponudba</li>
+        <li>Fotografija & video</li>
         <li>Fotokotiček</li>
-        <li>Tematska dekoracija</li>
-        <li>Trgovski centri</li>
       </ul>
     </div>
   </div>
@@ -919,28 +941,28 @@
     <span class="label">Organizacija na ključ vključuje</span>
     <div class="includes-grid">
       <div class="inc-item">
-        <h4 class="inc-title">Koncept & zasnova</h4>
-        <p class="inc-desc">Idejni koncept, vizija, časovnica in celostna logistika od prve ideje do zaključka.</p>
+        <h4 class="inc-title">Jasen koncept & načrt</h4>
+        <p class="inc-desc">Idejni koncept, vizija, časovnica in celostna logistika od prve ideje do zaključka. En kontakt, ena odgovornost.</p>
       </div>
       <div class="inc-item">
         <h4 class="inc-title">Dekoracija & prostor</h4>
-        <p class="inc-desc">Balonske in dekorativne postavitve, prilagojene prostoru in zgodbi dogodka.</p>
+        <p class="inc-desc">Balonske in dekorativne postavitve, estetsko usklajene s konceptom in prostorom — brez pretiravanja.</p>
       </div>
       <div class="inc-item">
         <h4 class="inc-title">Fotografija & video</h4>
-        <p class="inc-desc">Profesionalna dokumentacija vzdušja — fotografija, video in reels za omrežja.</p>
+        <p class="inc-desc">Dokumentacija vzdušja in detajlov — fotografija, video in reels, ki služijo znamki tudi po zaključku.</p>
       </div>
       <div class="inc-item">
         <h4 class="inc-title">Gostinska ponudba</h4>
-        <p class="inc-desc">Barman, barska postrežba, catering, sladki kotiček — po meri dogodka.</p>
+        <p class="inc-desc">Barman, barska postrežba, catering in sladki kotiček — v sodelovanju z izbranimi partnerji, po meri dogodka.</p>
       </div>
       <div class="inc-item">
-        <h4 class="inc-title">Koordinacija ekipe</h4>
-        <p class="inc-desc">Diskretna prisotnost na dan dogodka — vedno korak pred dogajanjem.</p>
+        <h4 class="inc-title">Koordinacija na dan</h4>
+        <p class="inc-desc">Diskretna in profesionalna prisotnost — vedno korak pred dogajanjem, brez nepotrebnega vpletanja.</p>
       </div>
       <div class="inc-item">
         <h4 class="inc-title">Brezskrbna izkušnja</h4>
-        <p class="inc-desc">Naročnik v celoti uživa v trenutku. Mi skrbimo za tekoč potek in vse detajle.</p>
+        <p class="inc-desc">Na dan dogodka ste vi gost. Mi skrbimo za to, da vse deluje — tiho, natančno in brez improvizacije.</p>
       </div>
     </div>
   </div>
@@ -948,7 +970,7 @@
 
 <!-- QUOTE -->
 <div class="quote-strip">
-  <blockquote>"Ustvarjamo doživetja, ki ne potrebujejo razlage — ker jih začutiš."</blockquote>
+  <blockquote>"Nismo agencija, ki je začela z marketingom. Smo managerji, ki so začeli z odgovornostjo."</blockquote>
 </div>
 
 <!-- SPLETNE STRANI -->
@@ -1020,15 +1042,15 @@
 <section id="o-nas">
   <div class="fade-up">
     <span class="label">O nas</span>
-    <h2 class="h2">Agencija za tiste,<br>ki razumejo vrednost kakovosti.</h2>
-    <p class="intro" style="color:rgba(253,252,250,0.6);">Dogodkey ni namenjen množicam. Namenjen je naročnikom, ki razumejo vrednost dobrega načrtovanja, estetike in mirne izvedbe.</p>
+    <h2 class="h2">Naša zgodba se ne začne<br>v marketingu.</h2>
+    <p class="intro" style="color:rgba(253,252,250,0.6);">Dogodkey & Agency je butična agencija, ki združuje organizacijo dogodkov na ključ in marketinške storitve za podjetja. Delujemo na stičišču izkušnje, komunikacije in prodaje.</p>
   </div>
   <div class="o-nas-grid">
     <div class="o-nas-text fade-up">
-      <p>Smo ekipa kreativcev, organizatorjev in digitalnih strokovnjakov, ki verjamemo, da mora biti vsako sodelovanje doživetje — ne stres.</p>
-      <p>Verjamemo, da pravi luksuz ni v pretiravanju, temveč v ravnovesju — med vizualno dovršenostjo, jasno strukturo in brezskrbno izkušnjo naročnika.</p>
-      <p>Vsako sodelovanje se začne s pogovorom. Prisluhnemo vašim željam, razumemo vašo vizijo in jo nadgradimo s strokovnim znanjem in natančno izvedbo.</p>
-      <p>Naš cilj ni slediti trendom, temveč ustvarjati brezčasne rešitve, ki ostanejo relevantne tudi dolgo po zaključku.</p>
+      <p>Preden smo postali agencija, smo sami vodili projekte, prodajali blago in storitve ter nosili odgovornost za rezultate. Bili smo managerji, ki so razumeli prodajo, procese in številke — ter sprejemali odločitve, kjer ni bilo prostora za teorijo.</p>
+      <p>Zato zelo dobro razumemo, kaj pomeni vložiti denar v marketing ali dogodek. Vemo, da to ni samoumevna odločitev. Vemo, kako težko je ta denar zaslužiti — in kako pomembno je, da ima vsaka investicija jasen namen, strukturo in dolgoročno vrednost.</p>
+      <p>Dogodke in marketing obravnavamo enakovredno — kot orodji, ki morata služiti cilju. Ne ustvarjamo aktivnosti zaradi aktivnosti, temveč premišljene rešitve, ki podpirajo blagovno znamko, odnos in prodajo.</p>
+      <p>Naš pristop je miren, strukturiran in odgovoren. Razmišljamo kot naročnik, delujemo kot partner in izvajamo z občutkom za estetiko, jasnost in kontekst.</p>
       <div style="margin-top:36px;">
         <a href="#kontakt" class="btn btn-outline" style="color:var(--warm-white); border-color:rgba(255,255,255,0.2);">Pošlji povpraševanje →</a>
       </div>
@@ -1036,23 +1058,23 @@
     <div class="o-nas-values fade-up">
       <div class="val">
         <div class="val-num">01</div>
-        <div class="val-title">Mirno & samozavestno</div>
-        <div class="val-desc">Brez nepotrebne dramatike. Vsak korak je premišljen, vsaka odločitev utemeljena.</div>
+        <div class="val-title">Izkušnje iz prakse</div>
+        <div class="val-desc">Preden smo svetovali, smo sami prodajali, vodili in odgovarjali za rezultate. To razumevanje je temelj vsega, kar delamo.</div>
       </div>
       <div class="val">
         <div class="val-num">02</div>
-        <div class="val-title">Estetsko & brezčasno</div>
-        <div class="val-desc">Ne sledimo trendom — ustvarjamo rešitve, ki ostanejo relevantne dolgo po zaključku.</div>
+        <div class="val-title">Odgovornost za vložek</div>
+        <div class="val-desc">Vemo, kako težko je zaslužiti denar in kako previdno se ga vlaga. Z vsakim proračunom ravnamo, kot da bi bil naš.</div>
       </div>
       <div class="val">
         <div class="val-num">03</div>
-        <div class="val-title">Celovito & usklajeno</div>
-        <div class="val-desc">Marketing, dogodki in spletne strani kot ena kohezivna celota — brez nepotrebnih kompromisov.</div>
+        <div class="val-title">Partner, ne izvajalec</div>
+        <div class="val-desc">Ne verjamemo v hitre trike ali prazne obljube. Gradimo dolgoročna sodelovanja, kjer ni prostora za improvizacijo.</div>
       </div>
       <div class="val">
         <div class="val-num">04</div>
-        <div class="val-title">Diskretno & zanesljivo</div>
-        <div class="val-desc">Vedno korak pred dogajanjem. Naročnik v celoti uživa v rezultatu.</div>
+        <div class="val-title">Jasnost nad glasnostjo</div>
+        <div class="val-desc">Naš cilj ni biti povsod. Je biti relevanten tam, kjer to šteje — konsistentno, premišljeno in z namenom.</div>
       </div>
     </div>
   </div>
@@ -1097,7 +1119,7 @@
       <h3 class="pk-name">Lux</h3>
       <p class="pk-tag">Celovita izkušnja brez kompromisov.</p>
       <ul class="pk-list">
-        <li>Vse storitve Dogodkey</li>
+        <li>Vse storitve Dogodkey & Agency</li>
         <li>Premium izvedba po meri</li>
         <li>Dedicirani tim</li>
         <li>Neomejena podpora</li>
@@ -1174,14 +1196,22 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="f-logo">Dogodkey</span>
+  <span class="f-logo" style="display:flex;align-items:center;">
+    <svg width="110" height="28" viewBox="0 0 132 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6 L4 26 L12 26 C18.627 26 24 20.627 24 16 C24 11.373 18.627 6 12 6 Z" stroke="#FDFCFA" stroke-width="1.5" fill="none"/>
+      <line x1="4" y1="16" x2="24" y2="16" stroke="#C4A96B" stroke-width="1"/>
+      <text x="30" y="21" font-family="'Cormorant Garamond', Georgia, serif" font-size="15" font-weight="500" letter-spacing="1.5" fill="#FDFCFA">DOGODKEY</text>
+      <line x1="29" y1="26" x2="131" y2="26" stroke="#C4A96B" stroke-width="0.75" opacity="0.6"/>
+      <text x="30" y="32" font-family="'Inter', sans-serif" font-size="7" font-weight="400" letter-spacing="3.5" fill="rgba(253,252,250,0.4)">AGENCY</text>
+    </svg>
+  </span>
   <ul class="f-links">
     <li><a href="#marketing">Marketing</a></li>
     <li><a href="#dogodki">Dogodki</a></li>
     <li><a href="#spletne-strani">Spletne strani</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <span class="f-copy">© 2025 Dogodkey. Vse pravice pridržane.</span>
+  <span class="f-copy">© 2025 Dogodkey & Agency. Vse pravice pridržane.</span>
 </footer>
 
 <script>
@@ -1219,13 +1249,14 @@
 
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // Trigger elements already in viewport on load
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) el.classList.add('visible');
-    });
-  }, 100);
+  // Show elements already in viewport without animation
+  document.querySelectorAll('.fade-up').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) {
+      el.classList.add('instant', 'visible');
+      requestAnimationFrame(() => el.classList.remove('instant'));
+    }
+  });
 
   window.addEventListener('scroll', () => {
     document.getElementById('nav').style.boxShadow =
